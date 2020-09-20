@@ -4,12 +4,11 @@ import matplotlib.pyplot as plt
 hbar = 1
 m = 1
 
-# the adjustable width of the well, that determines the potential range
-a = 8
-
 # the x axis range
+lim1 = -4
+lim2 = 4
 step = 0.01
-x = np.arange(-a/2, a/2, step)
+x = np.arange(lim1, lim2, step)
 n = len(x)
 
 # the potential function
