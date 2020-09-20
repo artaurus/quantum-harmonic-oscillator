@@ -1,26 +1,37 @@
+# this code solves for the eigenfunctions and eigenvalues of a quantum harmonic
+# oscillator, based on the finite difference method code introduced by
+# @mholtrop.
+
 import numpy as np
 import matplotlib.pyplot as plt
 
 hbar = 1
 m = 1
+
+# the adjustable width of the well, that determines the potential range
 a = 8
-b = 2
+
+# the x axis range
 step = 0.01
 x = np.arange(-a/2, a/2, step)
 n = len(x)
 
+# the potential function
 V = x**2
 
+# represents the double derivative as a matrix using finite difference method
 mdd = 1/(step**2) * (np.diag(np.ones(n-1), k=-1)
                      - 2 * np.diag(np.ones(n))
                      + np.diag(np.ones(n-1), k=1))
 
+# sets up the hamiltonian as a matrix, and computes its eigenstuff
 H = -(hbar**2)/(2.0 * m) * mdd + np.diag(V)
 E, psi_t = np.linalg.eigh(H)
 psi = np.transpose(psi_t)
 
+# plotting the eigenfunctions and printing the eigenvalues
 fig, ax = plt.subplots(figsize=(8,6))
-ax.plot(x, V, color='k', label='V')
+ax.plot(x, V, color='k')
 print('Energies of the bound states:')
 for i in range(len(E)):
     if(E[i] < x[0]**2):
@@ -29,5 +40,4 @@ for i in range(len(E)):
 ax.grid()
 ax.set_xlabel('Position: x')
 ax.set_ylabel('Energy: E')
-ax.legend()
 plt.show()
