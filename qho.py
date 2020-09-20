@@ -30,9 +30,11 @@ fig, ax = plt.subplots(figsize=(8,6))
 ax.plot(x, V, color='k')
 print('Energies of the bound states:')
 for i in range(len(E)):
-    if(E[i] < max(V)):
-        print('E%s = %.2f' %(i, E[i]))
-        ax.plot(x, E[i] + 8*psi[i])
+	if(E[i] < max(V)):
+		print('E%s = %.2f' %(i, E[i]))
+		ax.plot(x, E[i] + 8*psi[i])
+	else:
+		break
 ax.grid()
 ax.set_xlabel('Position: x')
 ax.set_ylabel('Energy: E')
