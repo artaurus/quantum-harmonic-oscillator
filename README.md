@@ -1,13 +1,13 @@
-# Simple Quantum Mechanical Systems
+# Simple quantum mechanical systems
 
-This generic code solves for, and plots, the eigenfunctions and eigenvalues of a particle in a one-dimensional potential, based on the finite difference method code introduced by @mholtrop. Interesting potentials are:
+This generic code solves for, and plots, the eigenfunctions and eigenvalues of a particle in a one-dimensional potential, based on the finite difference method code introduced by @mholtrop. The potential array may be modified by the user. Interesting potentials are:
 
-## 1. the quantum harmonic oscillator
+## 1. The quantum harmonic oscillator
 ```
 V = x**2
 ```
 
-## 2. the finite square well
+## 2. The finite square well
 ```
 # well depth
 d = 5
@@ -21,7 +21,7 @@ V[0:a] = d
 V[b:n] = d
 ```
 
-## 3. the finite barrier
+## 3. The finite barrier
 ```
 # barrier height
 h = 5
@@ -33,10 +33,10 @@ b = int(2*n/3)
 V = np.zeros(n)
 V[a:b] = h
 ```
-The finite barrier potential generates pairs of eigenfunctions, as this method does not specify from which side the particle enters the system.
+This potential generates pairs of eigenfunctions, as the matrix method does not specify from which side the particle enters the system.
 
-## 4. the sine-squared function
+## 4. The sine-squared function
 ```
 V = np.sin(x)**2
 ```
-This potential generates eigenfunctions similar to those of an electron in the periodic potential of a lattice.
+This potential generates eigenfunctions similar to those of a particle in the periodic potential of a lattice.
